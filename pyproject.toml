@@ -10,3 +10,8 @@ dependencies = [
     "python-decouple>=3.8",
     "streamlit>=1.60.0",
 ]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.15.22",
+]
