@@ -40,6 +40,8 @@ def render(client, user_id):
             st.plotly_chart(fig_bar)
 
     except HTTPStatusError as e:
+        print(f"[API] HTTPStatusError in get_summary: {e.response.status_code} - {e.response.text}")
         st.error(f"Cannot connect to server: {e.response.status_code}")
-    except RequestError:
+    except RequestError as e:
+        print(f"[API] RequestError in get_summary: {e}")
         st.error("Cannot connect to the server. Please try again later.")

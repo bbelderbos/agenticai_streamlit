@@ -7,5 +7,6 @@ requires-python = ">=3.13"
 dependencies = [
     "httpx>=0.28.1",
     "plotly>=6.9.0",
+    "python-decouple>=3.8",
     "streamlit>=1.60.0",
 ]

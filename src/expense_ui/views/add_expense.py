@@ -29,5 +29,6 @@ def render(client, user_id: int):
                 result = client.classify_expense(description, user_id)
                 category = result.get("category", "Unknown")
                 st.success(f"Expense classified as: {category}")
-            except RequestError:
+            except RequestError as e:
+                print(f"[API] RequestError in classify_expense: {e}")
                 st.error("Cannot connect to the classification service.")

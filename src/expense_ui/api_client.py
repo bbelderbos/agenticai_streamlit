@@ -2,9 +2,10 @@ import httpx
 
 
 class ExpenseAPIClient:
-    def __init__(self, base_url: str, timeout: float = 5.0):
+    def __init__(self, base_url: str, timeout: float = 30.0):
         self.base_url = base_url
         self.timeout = timeout
+        print(f"[API] Initialized client with base_url={base_url}")
 
     def _user_headers(self, user_id: int | None) -> dict:
         return {"X-User-ID": str(user_id)} if user_id is not None else {}

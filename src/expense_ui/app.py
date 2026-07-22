@@ -1,13 +1,12 @@
-import os
-
 import streamlit as st
+from decouple import config
 
 from api_client import ExpenseAPIClient
 from views import add_expense, dashboard, expenses
 
 st.set_page_config(page_title="Expense Tracker", layout="wide")
 
-API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:8000/api/v1")
+API_BASE_URL = config("API_BASE_URL", default="http://localhost:8000/api/v1")
 client = ExpenseAPIClient(base_url=API_BASE_URL)
 
 with st.sidebar:

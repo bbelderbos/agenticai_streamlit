@@ -16,7 +16,8 @@ def render(client, user_id):
 
     try:
         expenses = client.get_expenses(user_id)
-    except RequestError:
+    except RequestError as e:
+        print(f"[API] RequestError in get_expenses: {e}")
         st.error("Cannot connect to the expenses service.")
         return
 
