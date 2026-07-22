@@ -1,13 +1,3 @@
-"""
-Build dashboard.py — fetch client.get_summary(user_id) and render two Plotly charts:
-
-Pie chart of summary["category_totals"] — px.pie(names=..., values=[float(v) for v in ...])
-Bar chart of summary["monthly_totals"] — px.bar(x=..., y=[float(v) for v in ...])
-Show st.info(...) for each chart section when the data dict is empty
-Wrap in try/except HTTPStatusError, RequestError and show st.error(...) on failure
-Note: Decimal values come back from the API as strings, so convert with float(v) before passing to Plotly
-"""
-
 import streamlit as st
 from httpx import HTTPStatusError, RequestError
 from plotly import express as px
@@ -40,7 +30,9 @@ def render(client, user_id):
             st.plotly_chart(fig_bar)
 
     except HTTPStatusError as e:
-        print(f"[API] HTTPStatusError in get_summary: {e.response.status_code} - {e.response.text}")
+        print(
+            f"[API] HTTPStatusError in get_summary: {e.response.status_code} - {e.response.text}"
+        )
         st.error(f"Cannot connect to server: {e.response.status_code}")
     except RequestError as e:
         print(f"[API] RequestError in get_summary: {e}")

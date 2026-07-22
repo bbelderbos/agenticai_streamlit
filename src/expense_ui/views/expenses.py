@@ -1,12 +1,3 @@
-"""
-Build `expenses.py` with a `render(client, user_id: int)` function that fetches `client.get_expenses(user_id)` and renders a row per expense using `st.columns`:
-- Call `st.header("Expenses")` first, before the `try` block
-- Left column: category, amount, currency, description
-- Right column: `st.button("Delete", key=f"del_{item['id']}")` that calls `client.delete_expense(item["id"])` then `st.rerun()` to refresh the list
-- Show `st.info(...)` when the list is empty
-- Wrap in `try/except RequestError` and include "Cannot connect" in the `st.error(...)` message — the test asserts on that substring
-"""
-
 import streamlit as st
 from httpx import RequestError
 

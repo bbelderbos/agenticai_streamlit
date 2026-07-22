@@ -1,13 +1,3 @@
-"""
-Build `add_expense.py` with a `render(client, user_id: int)` function that renders a form with:
-- Call `st.header("Add Expense")` first, before the form
-- `st.text_input` for the expense description inside `with st.form("add_expense_form")`
-- Check `if submitted and description.strip()` after the form block (not inside it)
-- Call `client.classify_expense(description, user_id)` inside `st.spinner` and display the result with `st.success(...)` — the message must include the category name (e.g. `"Food"`) since the test asserts `"Food" in at.success[0].value`
-- Show `st.warning(...)` when the description is empty
-- On `RequestError`, show `st.error(...)` containing "Cannot connect" — the test asserts on that substring
-"""
-
 import streamlit as st
 from httpx import RequestError
 
